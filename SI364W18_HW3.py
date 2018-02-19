@@ -230,7 +230,7 @@ def get_longest_tweet():
             if character != whitespace:
                 count += 1
             ttext[tweet.text] = count
-        sorted_tweet_text = sorted(tweet_text.items(), key = lambda x: x[1], reverse = true)
+        sorted_tweet_text = sorted(ttext.items(), key = lambda x: x[1], reverse = True)
         text = sorted_tweet_text[0] [0]
         longest_tweet = Tweet.query.filter_by(text = text).first()
         u = User.query.filter_by(id = longest_tweet.user_id).first()
