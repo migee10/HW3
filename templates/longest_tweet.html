@@ -1,12 +1,21 @@
-<p>The tweet text with the most non-whitespace characters is:</p>
+{% extends 'base.html' %}
 
+{% block content %}
+<div>
+  {% if text %}
+    <li>{{ text }} <br>
+    <i>posted by</i><strong>@{{ user }}</strong> </li>
+    <br> <br>
 
-<li>{{ tweet }}<br><i>posted by</i> <strong>@{{ userid }}</strong></li><br><br>
+  {% else %}
+    Please enter tweets. No tweets to display.
+    {% endif %}
+</div>
 
-<p>------------</p>
-<h3>Navigation</h3>
-<ul>
-    <li><a href="{{ url_for('index')}}">Go to Tweet input form.</a></li>
-    <li><a href="{{ url_for('see_all_users')}}">See all users.</a></li>
-    <li><a href="{{ url_for('see_all_tweets')}}">See all tweets so far.</a></li>
-</ul>
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
